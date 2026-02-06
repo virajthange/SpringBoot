@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+
+
+<bean id="batteryBean" class="com.ent.Battery">
+	<property name="backup" value="4000"></property>
+</bean>
+
+	
+<bean id="mobileBean" class="com.ent.Mobile">
+	<property name="price" value="400000"></property>
+	<property name="brand" value="Vivo"></property>
+	<property name="battery" ref="batteryBean"></property>
+
+	<property name="apps">
+		<list>
+			<value>Java</value>
+			<value>Sql</value>
+		</list>
+	</property>
+	
+	<property name="applications">
+		<list>
+			<bean id="a1" class="com.ent.Application">
+				<property name="name" value="Whatsapp"></property>
+			</bean>
+			<bean id="a2" class="com.ent.Application">
+				<property name="name" value="Instagram"></property>
+			</bean>
+		</list>
+	
+	</property>
+	
+	<property name="objects">
+		<list>
+			<bean id="a3" class="com.ent.Application">
+				<property name="name" value="FB"></property>
+			</bean>
+			<bean id="a4" class="com.ent.Application">
+				<property name="name" value="mIndicator"></property>
+			</bean>
+			<bean id="a5" class="com.ent.Battery">
+				<property name="backup" value="3000"></property>
+			</bean>
+		</list>
+	</property>
+</bean>
+    
+
+   
+</beans>
