@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<bean id="carBean" class="carEngine.viaSetter.Car">
+		<property name="id" value="1"></property>
+		<property name="brand" value="BMW"></property>
+		<property name="color" value="blue"></property>
+	</bean>
+	<bean id="engineBean" class="carEngine.viaSetter.Engine">
+		<property name="id" value="1"></property>
+		<property name="speed" value="200"></property>
+	</bean>
+	<bean id="showroomBean" class="carEngine.viaSetter.ShowRoom">
+		<property name="colorsAvailable">
+			<list>
+				<value>Blue</value>
+				<value>White</value>
+				<value>Black</value>
+			</list>
+		</property>
+		<property name="car" ref="carBean"></property>
+		<property name="engine" ref="engineBean"></property>
+		<property name="objects">
+			<list>
+				<bean class="carEngine.viaSetter.Car">
+					<property name="id" value="3"></property>
+					<property name="brand" value="BMW"></property>
+					<property name="color" value="Red"></property>
+				</bean>
+				<bean class="carEngine.viaSetter.Car">
+					<property name="id" value="4"></property>
+					<property name="brand" value="Enva"></property>
+					<property name="color" value="blue"></property>
+				</bean>
+			</list>
+		</property>
+		<property name="carSet">
+			<map>
+				<entry key-ref="car9">
+					<bean class="carEngine.viaSetter.Engine">
+						<property name="id" value="6"></property>
+						<property name="speed" value="200"></property>
+					</bean>
+				</entry>
+				<entry key-ref="car10">
+					<bean class="carEngine.viaSetter.Engine">
+						<property name="id" value="10"></property>
+						<property name="speed" value="250"></property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="car9" class="carEngine.viaSetter.Car">
+		<property name="id" value="7"></property>
+		<property name="brand" value="BMW"></property>
+		<property name="color" value="blue"></property>
+	</bean>
+	<bean id="car10" class="carEngine.viaSetter.Car">
+		<property name="id" value="10"></property>
+		<property name="brand" value="Ertiga"></property>
+		<property name="color" value="White"></property>
+	</bean>
+</beans>

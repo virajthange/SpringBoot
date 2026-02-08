@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<bean id="carBean" class="carEngine.viaConstructor.Car">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="BMW"></constructor-arg>
+		<constructor-arg value="White"></constructor-arg>
+	</bean>
+
+	<bean id="engineBean" class="carEngine.viaConstructor.Engine">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="220"></constructor-arg>
+	</bean>
+
+
+	<!-- showroom bean class -->
+	<bean id="showroomBean" class="carEngine.viaConstructor.ShowRoom">
+		<!-- injecting list of string(color) -->
+		<constructor-arg index="0">
+			<list>
+				<value>White</value>
+				<value>Black</value>
+				<value>Indigo</value>
+			</list>
+		</constructor-arg>
+		<!-- Injecting object of engine -->
+		<constructor-arg index="1" ref="carBean"></constructor-arg>
+		<constructor-arg index="2" ref="engineBean"></constructor-arg>
+
+		<!-- Injecting List<Ojbect> -->
+		<constructor-arg index="3">
+			<list>
+				<bean class="carEngine.viaConstructor.Car">
+					<constructor-arg value="1"></constructor-arg>
+					<constructor-arg value="BMW"></constructor-arg>
+					<constructor-arg value="White"></constructor-arg>
+				</bean>
+				<bean class="carEngine.viaConstructor.Engine">
+					<constructor-arg value="1"></constructor-arg>
+					<constructor-arg value="220"></constructor-arg>
+				</bean>
+			</list>
+		</constructor-arg>
+
+		<!-- injecting map -->
+		<constructor-arg index="4">
+			<map>
+				<entry key-ref="carBean2">
+					<bean class="carEngine.viaConstructor.Engine">
+						<constructor-arg value="2"></constructor-arg>
+						<constructor-arg value="220"></constructor-arg>
+					</bean>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="carBean2" class="carEngine.viaConstructor.Car">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="BMW"></constructor-arg>
+		<constructor-arg value="White"></constructor-arg>
+	</bean>
+
+
+
+
+</beans>
