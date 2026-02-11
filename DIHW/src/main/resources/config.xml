@@ -31,7 +31,7 @@
 	<bean id="shopBean" class="com.ent.viaSetter.Shop">
 		<property name="name" value="QSpider"></property>
 		<property name="items">
-			<map>
+			<map> 
 				<entry key="pen" value="10.00" />
 				<entry key="scale" value="20.00" />
 			</map>

@@ -23,7 +23,7 @@
 	<!-- showroom bean class -->
 	<bean id="showroomBean" class="carEngine.viaConstructor.ShowRoom">
 		<!-- injecting list of string(color) -->
-		<constructor-arg index="0">
+		<constructor-arg index="0"> 
 			<list>
 				<value>White</value>
 				<value>Black</value>
