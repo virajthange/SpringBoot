@@ -11,14 +11,61 @@
 	<bean id="laptopBean" class="com.ent.Laptop">
 		<property name="brand" value="HP"></property>
 	</bean>
+
 	<bean id="compBean" class="com.ent.Computer">
-		<property name="laptop" ref="laptopBean"></property>
+<!--		<property name="laptop" ref = "laptopBean">-->
+<!--		</property>-->
+		<property name="laptop">
+<!--			<ref bean="laptopBean"></ref>-->
+			<ref bean="laptopBean" />     <!-- Can use self closing tag -->
+		</property>
 	</bean>
+
 	<bean id="compBean2" class="com.ent.Computer">
 		<property name="laptop" ref="laptopBean"></property>
 	</bean>
 	
-	
-    
+
+
+	<bean id="libBean" class="com.ent.Library">
+		<property name="id" value="1"></property>
+		<property name="books">
+			<list>
+				<ref bean="book1"></ref>
+				<ref bean="book2"></ref>
+			</list>
+		</property>
+	</bean>
+	<bean id="book1" class="com.ent.Book">
+		<property name="id" value="1"></property>
+		<property name="name" value="Atomic Habits" />   <!-- Can use self closing tag also -->
+	</bean>
+	<bean id="book2" class="com.ent.Book">
+		<property name="id" value="2"></property>
+		<property name="name" value="Rich Dad"></property>
+	</bean>
+
+
+<!--	Car & Engine beans-->
+<!--	No need to manually inject engine reference , it will get injected automatically because of 'autowire' attribute-->
+    <bean id="car" class="com.ent.Car" autowire="byType">
+	</bean>
+
+<!--	bean id should be same as variable name defined in Car class in order to detect automatically (autowire= byName)-->
+
+<!--	bean id can be differ in case of autowire="byType"-->
+<!--	If multiple beans are available , can use primary attribute to avoid the confusion-->
+
+<!--    <bean id="engine" class="com.ent.Engine">-->
+<!--		<property name="cc" value="300" />-->
+<!--	</bean>-->
+
+	<bean id="engine1" class="com.ent.Engine">
+		<property name="cc" value="300" />
+	</bean>
+	<bean id="engine2" primary="true" class="com.ent.Engine">
+		<property name="cc" value="300" />
+	</bean>
+	<!--	Car & Engine beans-->
 
 </beans>
