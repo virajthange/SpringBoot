@@ -35,23 +35,25 @@ public class Controllers {
     }
 
     @RequestMapping("/data")
-    public String showData(Model model) {
+    public String data(Model model) {
         model.addAttribute("username", "Viraj");
         model.addAttribute("userage", 23);
+        model.addAttribute("user", new User(2, "Suraj", 38));
         return "data";
     }
     @RequestMapping("/viewdata")
-    public ModelAndView showData(ModelAndView model) {
-        model.setViewName("viewdata");
-        model.addObject("name", "Vinay");
-        model.addObject("age", 33);
-        model.addObject("user", new User(1, "Shubham", 34));
-        return model;
+    public ModelAndView showData(ModelAndView modelAndView) {
+//        ModelAndView modelAndView = new ModelAndView();   //We can define the reference in method body or fun parameter also but it is recommended to use as parameters
+        modelAndView.setViewName("viewdata");
+        modelAndView.addObject("name", "Vinay");
+        modelAndView.addObject("age", 33);
+        modelAndView.addObject("user", new User(1, "Shubham", 34));
+        return modelAndView;
     }
 
     @RequestMapping
-    @ResponseBody
+//    @ResponseBody
     public String home() {
-        return "hello";
+        return "home";
     }
 }

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.spider.__form_handling.User" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +17,13 @@
         <h1> Displaying data using ModelAndView through scriplet tag</h1>
         <%
             String uname = (String) request.getAttribute("name");
+            int age = (int) request.getAttribute("age");
+            User user = (User) request.getAttribute("user");
         %>
 
-        <%= uname%>
+        <h4>Username: <%= uname %> </h4>
+        <h4>Userage: <%= age %> </h4>
+        <h4>User details: <%= user %> </h4>
     </div>
 </body>
 </html>
