@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 @ResponseBody
 public class TestController {
     @GetMapping("/show")
-    public String show(@RequestParam  String name, int age) {
-        System.out.println("Name: "+ name + " Age: "+ age);              //Name: viraj Age: 25
-        return "Name: "+ name+ " Age: "+ age;
+    public String show(@RequestParam(name = "name")  String username, int age) {
+        System.out.println("Name: "+ username + " Age: "+ age);              //Name: viraj Age: 25
+        return "Name: "+ username+ " Age: "+ age;
     }
 
     @PostMapping("/register")
@@ -18,9 +18,10 @@ public class TestController {
         return obj;
     }
     @PutMapping("/update")
-    public String update(@RequestHeader String name, @RequestHeader int age) {
-        System.out.println(name + " "+ age);
-        return "updation successful... "+ " Name: "+ name + " age: "+ age;
+//    We have to match the variable name with key which we pass , but if we don't want to match we can make use of name attribute in @RequestHeader
+    public String update(@RequestHeader(name = "name") String myname, @RequestHeader int age) {
+        System.out.println(myname + " "+ age);
+        return "updation successful... "+ " Name: "+ myname + " age: "+ age;
     }
 
     @DeleteMapping("/delete/{id}/name/{age}")
@@ -30,8 +31,8 @@ public class TestController {
         return "deleted successfully, id: " + id + " Age "+ age;
     }
     @PatchMapping("/patch")
-    public String patch(@RequestParam String name ,@RequestParam int age) {
-        System.out.println(name+ " " + age);
-        return "update successfully " +  name + " "+ age;
+    public String patch(@RequestParam String name ,@RequestParam(name = "age") int userage) {
+        System.out.println(name+ " " + userage);
+        return "update successfully " +  name + " "+ userage;
     }
 }
