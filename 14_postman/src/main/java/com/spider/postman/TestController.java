@@ -12,8 +12,16 @@ public class TestController {
         return "Name: "+ username+ " Age: "+ age;
     }
 
+//    @PostMapping("/register")
+//    public String register(@RequestBody String obj) {
+//        System.out.println(obj);
+//        return obj;
+//    }
+
+
+//    Here we would get JSON object which will get converted to the java object Prodct and then we are sending back the response as the same object Product which will get converted to the JSON again
     @PostMapping("/register")
-    public String register(@RequestBody String obj) {
+    public Product register(@RequestBody Product obj) {
         System.out.println(obj);
         return obj;
     }
