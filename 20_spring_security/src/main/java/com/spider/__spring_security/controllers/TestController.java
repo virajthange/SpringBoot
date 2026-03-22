@@ -25,4 +25,15 @@ public class TestController {
         System.out.println("Students is: "+students);
         return students;
     }
+
+//    Admin urls
+    @GetMapping("/admin/admpage")
+    public String getAdminPage() {
+        return "This is admin page";
+    }
+
+    @GetMapping("/user/userpage")
+    public String getUserPage() {
+        return "This is user page";
+    }
 }
