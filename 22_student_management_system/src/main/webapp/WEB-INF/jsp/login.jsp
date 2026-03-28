@@ -89,21 +89,38 @@
       .extra a:hover {
         text-decoration: underline;
       }
+      .errmsg {
+        font-size: 14px;
+        font-weight: 500;
+        display: inline;
+        background: whitesmoke;
+        color: red;
+        border-radius: 10px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+      }
     </style>
   </head>
 
   <body>
     <div class="login-container">
       <h2>Login</h2>
-      <form>
+      <form action="/auth" method="post">
+      <%
+        if(request.getAttribute("msg") != null) {
+      %>
+            <p class="errmsg"> ${msg} </p>
+      <%
+        }
+      %>
         <div class="input-group">
           <label>Email</label>
-          <input type="email" placeholder="Enter your email" required />
+          <input type="text" name="email" placeholder="Enter your email" required />
         </div>
 
         <div class="input-group">
           <label>Password</label>
-          <input type="password" placeholder="Enter your password" required />
+          <input type="password" name="password" placeholder="Enter your password" required />
         </div>
 
         <button type="submit" class="btn">Login</button>

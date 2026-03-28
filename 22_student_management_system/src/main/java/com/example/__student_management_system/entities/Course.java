@@ -3,7 +3,11 @@ package com.example.__student_management_system.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -15,8 +19,21 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "course_id")
     private Integer id;
+
     private String name;
 
-    @ManyToMany
+    private String duration;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdDate;
+    @UpdateTimestamp
+    private LocalDateTime updatedDate;
+
+    @ManyToMany(mappedBy = "courses")
     private List<Student> students;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Users user;
 }

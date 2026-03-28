@@ -3,10 +3,8 @@ package com.example.__student_management_system.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.stereotype.Controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,29 +12,23 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "student_table")
-@ToString
-public class Student {
+@Table(name = "user_table")
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
-    @Column
+    @Column(name = "user_id")
+    private Integer id;
     private String email;
+    private String name;
+    private String password;
+    private Long phone;
 
     @CreationTimestamp
+    @Column(updatable = false)
     private LocalDateTime createdDate;
     @UpdateTimestamp
     private LocalDateTime updatedDate;
 
-    @ManyToMany
-    @JoinTable( joinColumns = @JoinColumn(name = "stud_id") , inverseJoinColumns = @JoinColumn(name = "course_id"))
-    private List<Course> courses;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Users user;
-
-//    left part represents the class in which you are defining the association.
-
+    @OneToMany
+    private List<Student> students;
 }
