@@ -11,4 +11,5 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
     public Integer countByUserId(Integer id);
 
     public List<Course> findTop4ByUserIdOrderByCreatedDateDesc(Integer id);
+
 }
