@@ -36,16 +36,19 @@
         }
         .hero{
             width: 100%;
-            min-height: 85vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: linear-gradient(to bottom right, rgb(232, 237, 237) , rgb(155, 236, 166) );
+
         }
         .hero form{
+            margin-top: 5vh;
             width: 40%;
-            background-color: whitesmoke;
             padding: 60px 50px;
             border-radius: 10px;
+            background: linear-gradient(to bottom right, rgb(144, 228, 133) , rgb(117, 163, 123) );
         }
         form label{
             font-size: 18px;
@@ -57,6 +60,8 @@
             margin-bottom: 20px;
             border: none;
             border-radius: 5px;
+                        background-color: rgba(243, 249, 243, 0.652);
+
         }
         .btn{
             width: 100%;
@@ -78,7 +83,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 5px;
   justify-content: center;
 }
 
@@ -97,7 +102,7 @@
 
     display: flex;
     flex-wrap: wrap;   /* allows items to go to next row */
-    gap: 15px;
+    gap: 5px;
     justify-content: space-between;
 }
 
@@ -136,18 +141,31 @@
   /* gap: 8px; */
   cursor: pointer;
 }
+     .back{
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                background-color: green;
+                padding: 6px 15px;
+                border-radius: 15px;
+            }
+            .back a{
+                text-decoration: none;
+                color: white;
+            }
+     form h2{
+        text-align: center;
+        margin-bottom: 40px;
+     }
     </style>
 </head>
 <body>
     <div class="main">
-        <header>
-            <h1>Add New Student</h1>
-            <div class="icons">
-               <a href="dashboard">X</a>
-            </div>
-        </header>
+        <div class="back"> <a href="/dashboard"> Back </a> </div>
+
         <div class="hero">
             <form action="newstudent" method="post">
+                <h2>Add New Student</h2>
                 <label for="courseName">Name:</label>
                 <input type="text" id="courseName" name="name"><br><br>
                 <label for="duration">Email:</label><br>

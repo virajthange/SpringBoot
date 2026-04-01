@@ -19,7 +19,7 @@ public class SecConfig {
         httpSecurity
                 .csrf((c) -> c.disable())
                 .authorizeHttpRequests((req) ->req
-                        .requestMatchers("/", "/login", "/register", "/reg", "/auth").permitAll()
+                        .requestMatchers("/", "/login", "/register", "/reg", "/auth", "/forgetpassword","/sendotp", "/otp", "/changepass", "/changepassword").permitAll()
                         .requestMatchers("/WEB-INF/**")
                         .permitAll()
                         .anyRequest().authenticated()

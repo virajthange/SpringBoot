@@ -19,30 +19,32 @@
         padding: 0;
         box-sizing: border-box;
       }
-      header {
-        width: 100%;
-        height: 5vh;
-        background-color: rgb(27, 27, 93);
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 15px;
-      }
-      .main-text {
-        background-color: rgba(128, 128, 128, 0.316);
-        width: 100%;
-        height: 10vh;
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        padding: 0 30px;
-      }
+
+       .main-text {
+                   background-color: rgba(128, 128, 128, 0.316);
+                   width: 100%;
+                   height: 10vh;
+                   display: flex;
+                   align-items: center;
+                   justify-content: space-between;
+                   background: linear-gradient(to bottom right, rgb(126, 218, 126), rgb(151, 193, 149));
+                   padding: 0 10vh;
+           }
+              .main-text a{
+                    text-decoration: none;
+                    font-size: 18px;
+                    background-color: green;
+                    color: white;
+                    padding: 7px 20px;
+                    border-radius: 20px;
+
+                  }
       .hero {
-        padding-top: 10vh;
         width: 100%;
+        height: 90vh;
         /* min-height: 85vh; */
         display: flex;
+        background: linear-gradient(to bottom right, rgb(232, 237, 237) , rgb(155, 236, 166) );
         justify-content: center;
       }
       table {
@@ -66,10 +68,11 @@
       table .edit-button {
         background-color: green;
       }
+
       table thead {
-        background-color: gray;
-        color: white;
-      }
+             background-color: green;
+             color: white;
+           }
       table th,
       table td {
         padding: 10px;
@@ -81,67 +84,79 @@
       button a{
         color: white;
       }
+      .table-container{
+              padding-top: 10vh;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: start;
+              justify-content: center;
+           }
+
     </style>
   </head>
 
   <body>
     <div class="main">
-      <header>
-        <h1>Student List</h1>
-        <div class="icons">
-          <i class="ri-mail-line"></i>
-          <i class="ri-user-line"></i>
-        </div>
-      </header>
-      <div class="main-text"><a href="dashboard">Home</a> /students</div>
+
+      <div class="main-text">
+                   <a href="dashboard">Home</a>
+                   <h1>Course List</h1>
+                   <div class="icons">
+
+                   </div>
+                 </div>
 
       <div class="hero">
        <%
                       List<Student> students = (List<Student>) request.getAttribute("students");
 
        %>
-        <table>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>email</th>
-              <th>Course</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+      <div class="table-container">
+          <table>
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Name</th>
+                      <th>email</th>
+                      <th>Course</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
 
 
 
-          <%
-                if(!students.isEmpty()){
-                for(Student val: students){
-           %>
-                     <tr>
-                           <td><%= val.getId() %></td>
-                           <td><%= val.getName() %></td>
-                           <td><%= val.getEmail() %></td>
-                           <td>
-                                <%
-                                    List<Course> courseList = val.getCourses();
-                                    for(Course course : courseList){
-                                %>
-                                       | <%=course.getName()%>
-                                <%
-                                    }
-                                %> |
-                           </td>
-                           <td>
-                                 <button class="edit-button"><a href="/editstudent/<%=val.getId()%>">Edit</a></button>
-                                <button class="delete-button"><a href="/deletestudent/<%=val.getId()%>">Delete</a></button>
-                           </td>
-                      </tr>
-             <%
-                }
-                }
-             %>
+                  <%
+                        if(!students.isEmpty()){
+                        for(Student val: students){
+                   %>
+                             <tr>
 
-        </table>
+                                   <td><%= val.getId() %></td>
+                                   <td><%= val.getName() %></td>
+                                   <td><%= val.getEmail() %></td>
+                                   <td>
+                                        <%
+                                            List<Course> courseList = val.getCourses();
+                                            for(Course course : courseList){
+                                        %>
+                                               | <%=course.getName()%>
+                                        <%
+                                            }
+                                        %> |
+                                   </td>
+                                   <td>
+                                         <button class="edit-button"><a href="/editstudent/<%=val.getId()%>">Edit</a></button>
+                                        <button class="delete-button"><a href="/deletestudent/<%=val.getId()%>">Delete</a></button>
+                                   </td>
+                              </tr>
+                     <%
+                        }
+                        }
+                     %>
+
+                </table>
+      </div>
       </div>
     </div>
   </body>

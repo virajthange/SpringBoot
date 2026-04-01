@@ -1,8 +1,14 @@
 package com.example.__student_management_system.service;
 
-import org.springframework.stereotype.Service;
+import com.example.__student_management_system.dtos.StudentDTO;
+import org.springframework.ui.Model;
 
-@Service
-public class StudentService {
+import java.security.Principal;
 
+public interface StudentService {
+    String getStudentList(Principal principal, Model model);
+    String newStudent(Principal principal, Model model);
+    String addNewStudent(Principal principal, StudentDTO studentDTO);
+    String getEditStudent(Integer studentId, Principal principal, Model model);
+    String editStudents(StudentDTO studentDTO);
 }

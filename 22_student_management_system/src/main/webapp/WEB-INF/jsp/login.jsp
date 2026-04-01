@@ -18,13 +18,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #667eea, #764ba2);
+        background: linear-gradient(
+                              to bottom right,
+                              rgb(232, 237, 237),
+                              rgb(155, 236, 166)
+                            );
       }
 
       .login-container {
-        background: #ffffff;
+        background:linear-gradient(to bottom right,  rgb(181, 222, 181), rgb(149, 226, 149));
         padding: 40px;
-        width: 350px;
+        width: 370px;
         border-radius: 10px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         text-align: center;
@@ -54,6 +58,7 @@
         border-radius: 5px;
         outline: none;
         transition: 0.3s;
+        background-color: rgba(243, 249, 243, 0.652);
       }
 
       .input-group input:focus {
@@ -63,7 +68,7 @@
       .btn {
         width: 100%;
         padding: 12px;
-        background: #667eea;
+        background: green;
         border: none;
         border-radius: 5px;
         color: white;
@@ -73,7 +78,7 @@
       }
 
       .btn:hover {
-        background: #5a67d8;
+
       }
 
       .extra {
@@ -92,12 +97,24 @@
       .errmsg {
         font-size: 14px;
         font-weight: 500;
-        display: inline;
+        display: inline-block;
         background: whitesmoke;
         color: red;
         border-radius: 10px;
         padding: 5px 10px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
+      }
+      .forget{
+        width: 100%;
+        text-align: center;
+        padding: 5px 0;
+        font-size: 13px;
+
+      }
+      .forget a{
+        text-decoration: none;
+        color: purple;
+
       }
     </style>
   </head>
@@ -128,6 +145,7 @@
         <div class="extra">
           <p>Don't have an account? <a href="register">Register</a></p>
         </div>
+        <div class="forget"> <a href="forgetpassword">Forget passowrd ?</a></div>
       </form>
     </div>
   </body>

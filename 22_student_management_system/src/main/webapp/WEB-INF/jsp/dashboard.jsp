@@ -210,14 +210,10 @@
         height: 5vh;
         width: 100%;
         color: green;
-        /* text-align: center; */
         display: flex;
         align-items: center;
         justify-content: center;
-        /* background-color: transparent; */
-
-        /* background: linear-gradient(to bottom right, rgb(232, 237, 237) , rgb(155, 236, 166) ); */
-
+        padding-top: 15px;
       }
     .logout-btn{
         padding: 10px 20px;

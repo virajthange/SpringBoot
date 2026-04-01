@@ -20,32 +20,25 @@
             min-height: 100vh;
             background-color: rgba(135, 207, 235, 0.425);
         }
-        header{
-            width: 100%;
-            height: 5vh;
-            background-color: rgb(27, 27, 93);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 15px;
-        }
-        .icons a{
-            text-decoration: none;
-            color: white;
-        }
+
+
         .hero{
             width: 100%;
-            min-height: 85vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 5vh 0;
+            background: linear-gradient(to bottom right, rgb(232, 237, 237) , rgb(155, 236, 166) );
         }
         .hero form{
             width: 40%;
             background-color: whitesmoke;
             padding: 60px 50px;
             border-radius: 10px;
+            padding-top: 5vh;
+            background: linear-gradient(to bottom right, rgb(144, 228, 133) , rgb(117, 163, 123) );
+
         }
         form label{
             font-size: 18px;
@@ -57,6 +50,8 @@
             margin-bottom: 20px;
             border: none;
             border-radius: 5px;
+            background-color: rgba(243, 249, 243, 0.652);
+
         }
         .btn{
             width: 100%;
@@ -136,21 +131,35 @@
   /* gap: 8px; */
   cursor: pointer;
 }
+    form h2{
+        text-align: center;
+        margin-bottom: 40px;
+    }
+       .back{
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                background-color: green;
+                padding: 6px 15px;
+                border-radius: 15px;
+            }
+            .back a{
+                text-decoration: none;
+                color: white;
+            }
     </style>
 </head>
 <body>
     <div class="main">
-        <header>
-            <h1>Edit Student</h1>
-            <div class="icons">
-               <a href="/dashboard">X</a>
-            </div>
-        </header>
+
         <%
             Student student = (Student) request.getAttribute("student");
         %>
         <div class="hero">
+                <div class="back"> <a href="/dashboard"> Back </a> </div>
+
             <form action="/editstudent" method="post">
+                <h2>Edit Student</h2>
                  <label for="id">Name:</label>
                  <input type="number" id="id" value="<%=student.getId()%>" readonly name="id"><br><br>
                 <label for="sname">Name:</label>
@@ -161,24 +170,23 @@
 
 <%
     List<Course> courses =(List<Course>) request.getAttribute("courses");
+    List<Course> allCourses =(List<Course>) request.getAttribute("allcourses");
 %>
 <div class="checkbox-container">
 
     <%
-        if(!courses.isEmpty()) {
-            for(Course val: courses) {
+        if(!allCourses.isEmpty()) {
+            for(Course val: allCourses) {
     %>
                <label>
-                     <input type="checkbox" name="courseIds" value="<%=val.getId()%>"> <%=val.getName()%>
+                     <input type="checkbox" <%=
+                        courses.contains(val) ? "checked" : ""
+                      %> name="courseIds" value="<%=val.getId()%>"> <%=val.getName()%>
                </label>
     <%
         }
         }
     %>
-
-
-
-
 </div>
 
                 <div class="btn">

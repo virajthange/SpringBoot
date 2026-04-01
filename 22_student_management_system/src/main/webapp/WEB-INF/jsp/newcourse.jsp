@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Course</title>
-
     <style>
         * {
             margin: 0;
@@ -16,35 +15,35 @@
             min-height: 100vh;
             background-color: rgba(135, 207, 235, 0.425);
         }
-        header{
-            width: 100%;
-            height: 5vh;
-            background-color: rgb(27, 27, 93);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 15px;
-        }
+
         .icons a{
             text-decoration: none;
             color: white;
         }
-        .hero{
-            width: 100%;
-            min-height: 85vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .hero form{
-            width: 40%;
-            background-color: whitesmoke;
-            padding: 60px 50px;
-            border-radius: 10px;
-        }
+       .hero{
+                   width: 100%;
+                   min-height: 100vh;
+                   display: flex;
+                   justify-content: center;
+                   align-items: center;
+               background: linear-gradient(to bottom right, rgb(232, 237, 237) , rgb(155, 236, 166) );
+
+               }
+         .hero form{
+                    width: 35%;
+                    /* background-color: whitesmoke; */
+                background: linear-gradient(to bottom right, rgb(144, 228, 133) , rgb(117, 163, 123) );
+                box-shadow: 7px 7px 20px gray;
+
+                    padding: 60px 50px;
+                    border-radius: 10px;
+                }
         form label{
             font-size: 18px;
+        }
+        .btn{
+            display:flex;
+            justify-content: center;
         }
         form input{
             width: 100%;
@@ -53,31 +52,42 @@
             margin-bottom: 20px;
             border: none;
             border-radius: 5px;
+            background-color: rgba(243, 249, 243, 0.652);
         }
-        .btn{
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
+
         form button{
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             background-color: green;
             color: white;
+                        font-weight: 600;
+
         }
+         .back{
+                    position: absolute;
+                    top: 20px;
+                    left: 20px;
+                    background-color: green;
+                    padding: 6px 15px;
+                    border-radius: 15px;
+                }
+                .back a{
+                    text-decoration: none;
+                    color: white;
+                }
+         form h2{
+            text-align: center;
+            margin-bottom: 40px;
+         }
     </style>
 </head>
 <body>
     <div class="main">
-        <header>
-            <h1>Add New Course</h1>
-            <div class="icons">
-               <a href="dashboard">X</a>
-            </div>
-        </header>
+        <div class="back"> <a href="/dashboard"> Back </a> </div>
         <div class="hero">
             <form action="#" method="post">
+                <h2>Add New Course</h2>
                 <label for="courseName">Course Name:</label><br>
                 <input type="text" id="courseName" name="name"><br><br>
                 <label for="duration">Duration:</label><br>

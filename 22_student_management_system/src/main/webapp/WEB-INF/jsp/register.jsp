@@ -18,11 +18,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #667eea, #764ba2);
+        background: linear-gradient(
+                                      to bottom right,
+                                      rgb(232, 237, 237),
+                                      rgb(155, 236, 166)
+                                    );
     }
 
     .register-container {
-        background: #ffffff;
+        background:linear-gradient(to bottom right,  rgb(181, 222, 181), rgb(149, 226, 149));
         padding: 40px;
         width: 380px;
         border-radius: 10px;
@@ -54,6 +58,7 @@
         border-radius: 5px;
         outline: none;
         transition: 0.3s;
+        background-color: rgba(243, 249, 243, 0.652);
     }
 
     .input-group input:focus {
@@ -63,7 +68,7 @@
     .btn {
         width: 100%;
         padding: 12px;
-        background: #667eea;
+        background: green;
         border: none;
         border-radius: 5px;
         color: white;
@@ -73,7 +78,7 @@
     }
 
     .btn:hover {
-        background: #5a67d8;
+
     }
 
     .extra {

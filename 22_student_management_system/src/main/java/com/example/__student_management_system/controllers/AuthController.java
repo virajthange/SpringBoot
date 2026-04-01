@@ -2,6 +2,7 @@ package com.example.__student_management_system.controllers;
 
 import com.example.__student_management_system.dtos.RegisterDTO;
 import com.example.__student_management_system.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,5 +38,34 @@ public class AuthController {
     @GetMapping("/dashboard")
     public String getDashboard(Principal principal, @RequestParam(required = false) String msg, Model model) {
        return userService.dashboard(principal, model, msg);
+    }
+
+    @GetMapping("/forgetpassword")
+    public String forgetPassword () {
+        return "forgetpassword";
+    }
+
+    @PostMapping("/sendotp")
+    public String sendOtp(HttpServletRequest req) {
+        String email = (String) req.getParameter("email");
+        return userService.sendOtp(email);
+    }
+
+    @GetMapping("/changepassword")
+    public String changePassword() {
+        return "changepassword";
+    }
+
+    @PostMapping("/otp")
+    public String otp(HttpServletRequest req) {
+        Integer otps = Integer.parseInt(req.getParameter("otps"));
+        return userService.validateOtp(otps);
+
+    }
+
+    @PostMapping("/changepass")
+    public String changepass(HttpServletRequest req) {
+        String password = (String) req.getParameter("password");
+        return userService.changePass(password);
     }
 }

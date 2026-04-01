@@ -1,23 +1,16 @@
 package com.example.__student_management_system.controllers;
 
 import com.example.__student_management_system.dtos.CourseDTO;
-import com.example.__student_management_system.entities.Course;
-import com.example.__student_management_system.entities.Student;
-import com.example.__student_management_system.entities.Users;
 import com.example.__student_management_system.repositories.CourseRepository;
 import com.example.__student_management_system.repositories.UserRepository;
 import com.example.__student_management_system.service.CourseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.security.Principal;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
