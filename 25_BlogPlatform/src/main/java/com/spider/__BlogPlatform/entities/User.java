@@ -18,12 +18,18 @@ public class User {
     @Id
     private Integer id;
     private String name;
+
     @Column(unique = true, nullable = false)
     private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.USER;       //Default value will be USER
+
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-    @Enumerated(EnumType.STRING)
-    private Role role;
 }

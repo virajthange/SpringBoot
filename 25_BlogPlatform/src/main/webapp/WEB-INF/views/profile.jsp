@@ -28,7 +28,7 @@
       nav {
         width: 100%;
         padding: 10px;
-        height: 15vh;
+        min-height: 20vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -60,14 +60,14 @@
         color: white;
         font-size: 14px;
       }
-      nav ul li:nth-child(2) {
+      nav ul li:nth-child(3) {
         background-color: var(--prim-color);
         padding: 5px 10px;
         border-radius: 5px;
       }
       .hero {
         width: 100%;
-        height: 80vh;
+        min-height: 75vh;
         background-color: var(--prim-color);
         display: flex;
         align-items: center;
@@ -92,22 +92,14 @@
         border: none;
         outline: none;
       }
-      .hero-container h2 {
+      .hero-container h2,
+      .hero-container p,
+      .hero-container h3 {
         color: white;
       }
       .hero-container button {
         background-color: var(--dark-color);
         color: white;
-      }
-      label {
-        color: white;
-      }
-      .hero-container textarea {
-        width: 100%;
-        border: none;
-        border-radius: 5px;
-        padding: 5px;
-        outline: none;
       }
       .blog {
         width: 100%;
@@ -115,6 +107,10 @@
         border: none;
         border-radius: 5px;
         background-color: rgba(245, 245, 245, 0.723);
+      }
+      .blog h3,
+      .blog button {
+        margin-bottom: 5px;
       }
       footer {
         width: 100%;
@@ -153,20 +149,18 @@
       </nav>
       <div class="hero">
         <div class="hero-container">
-          <h2>Create new post</h2>
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" />
-          <label for="content">Content</label>
-          <textarea rows="4" cols="50"></textarea>
-          <label for="tags">Tags</label>
-          <input
-            type="text"
-            name="tags"
-            id="tags"
-            placeholder="Comma seperated tags"
-          />
+          <h2>User Profile</h2>
+          <p>Name: John Doe</p>
+          <p>Email: john.doe@example.com</p>
 
-          <button>Publish</button>
+          <h3>Your posts</h3>
+          <div class="blog">
+            <h3 style="color: black">Blog title</h3>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+
+          <button>Logout</button>
         </div>
       </div>
       <footer>

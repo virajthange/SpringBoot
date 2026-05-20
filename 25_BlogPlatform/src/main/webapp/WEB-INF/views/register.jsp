@@ -77,10 +77,10 @@
         <div class="form-container">
             <form action="/register" method="post">
             <h2 class="register-text">Register here</h2>
-            <input type="text" required placeholder="Enter username">
-            <input type="email" required placeholder="Enter email">
-            <input type="text" required placeholder="Enter full name">
-            <input type="password" required placeholder="Enter password">
+            <input type="text" name="username" required placeholder="Enter username">
+            <input type="email" name="email" required placeholder="Enter email">
+            <input type="text" name="name" required placeholder="Enter full name">
+            <input type="password" name="password" required placeholder="Enter password">
             <button type="submit">Register</button>
             <a class="already" href="/login">Already have an account? Login here</a>
         </form>

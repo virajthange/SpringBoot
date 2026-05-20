@@ -137,9 +137,9 @@
         <nav>
             <h2>Blog Dashboard</h2>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Create new post</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="/user/home">Home</a></li>
+                <li><a href="/user/create-post">Create new post</a></li>
+                <li><a href="/user/profile">Profile</a></li>
             </ul>
         </nav>
         <div class="hero">

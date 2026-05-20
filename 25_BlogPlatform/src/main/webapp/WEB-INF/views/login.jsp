@@ -59,6 +59,12 @@
             align-items: center;
             gap: 20px;
         }
+        .form-container p {
+            color: blue
+        }
+        .form-container p a {
+                    list-style: none;
+        }
         form input {
             padding: 7px;
             border-radius: 5px;
@@ -76,6 +82,7 @@
             <input type="email" required placeholder="Enter email">
             <input type="password" required placeholder="Enter password">
             <button type="submit">Login</button>
+            <p>Haven't registered yet ? <a href="/register">Register here</a></p>
         </form>
         </div>
     </div>
