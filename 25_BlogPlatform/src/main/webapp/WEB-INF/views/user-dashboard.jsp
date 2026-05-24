@@ -28,8 +28,8 @@
       }
       nav {
         width: 100%;
-        padding: 10px;
-        height: 15vh;
+        padding: 10px 5vh;
+        height: 25vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -48,27 +48,31 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+      }
+          nav ul li {
         background-color: var(--light-color);
-      }
-      nav ul li {
-        text-align: center;
-          width: 100%;
-        list-style: none;
-      }
+             margin: 5px 0;
+             text-align: center;
+             width: 100%;
+             list-style: none;
+             padding: 6px 10px;
+             background-color: var(--light-color);
+           }
       nav ul li a {
         width: 100%;
         text-decoration: none;
         color: white;
-        font-size: 14px;
+        font-size: 16px;
+        padding: 8px;
       }
       nav ul li:nth-child(1) {
         background-color: var(--prim-color);
-        padding: 5px 10px;
+        padding: 6px 10px;
         border-radius: 5px;
       }
       .hero {
         width: 100%;
-        height: 80vh;
+        height: 70vh;
         background-color: var(--prim-color);
         display: flex;
         align-items: center;

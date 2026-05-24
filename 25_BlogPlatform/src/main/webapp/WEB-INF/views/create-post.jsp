@@ -27,8 +27,8 @@
       }
       nav {
         width: 100%;
-        padding: 10px;
-        height: 15vh;
+        padding: 10px 5vh;
+        height: 25vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -47,27 +47,30 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: var(--light-color);
       }
       nav ul li {
-        text-align: center;
-        width: 100%;
-        list-style: none;
-      }
+             background-color: var(--light-color);
+                  margin: 5px 0;
+                  text-align: center;
+                  width: 100%;
+                  list-style: none;
+                  padding: 6px 10px;
+                  background-color: var(--light-color);
+                }
       nav ul li a {
         width: 100%;
         text-decoration: none;
         color: white;
-        font-size: 14px;
+        font-size: 16px;
       }
       nav ul li:nth-child(2) {
         background-color: var(--prim-color);
-        padding: 5px 10px;
+        padding: 6px 10px;
         border-radius: 5px;
       }
       .hero {
         width: 100%;
-        height: 80vh;
+        height: 70vh;
         background-color: var(--prim-color);
         display: flex;
         align-items: center;
@@ -104,6 +107,7 @@
       }
       .hero-container textarea {
         width: 100%;
+         min-height: 120px;
         border: none;
         border-radius: 5px;
         padding: 5px;
@@ -146,7 +150,7 @@
       <nav>
         <h2>Blog Dashboard</h2>
         <ul>
-          <li><a href="/user/home">Home</a></li>
+          <li><a href="/user/dashboard">Home</a></li>
           <li><a href="/user/create-post">Create new post</a></li>
           <li><a href="/user/profile">Profile</a></li>
         </ul>

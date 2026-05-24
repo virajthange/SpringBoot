@@ -79,8 +79,8 @@
         <div class="form-container">
             <form action="/login" method="post">
             <h2 class="login-text">Login here</h2>
-            <input type="email" required placeholder="Enter email">
-            <input type="password" required placeholder="Enter password">
+            <input type="email" name="username" required placeholder="Enter email">
+            <input type="password" name="password" required placeholder="Enter password">
             <button type="submit">Login</button>
             <p>Haven't registered yet ? <a href="/register">Register here</a></p>
         </form>

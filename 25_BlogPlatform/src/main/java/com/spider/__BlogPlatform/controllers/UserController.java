@@ -13,7 +13,7 @@ public class UserController {
         return "create-post";
     }
 
-    @GetMapping("/home")
+    @GetMapping("/dashboard")
     public String home() {
         return "user-dashboard";
     }
