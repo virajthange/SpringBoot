@@ -26,23 +26,26 @@
         }
 
         .register-text {
-            color: white;
+            color: black;
             font-size: 24px;
             margin-bottom: 20px;
         }
         form button {
             background-color: rgb(53, 153, 193);
             color: white;
+            width: 100%;
             border: none;
-            padding: 5px 10px;
+            padding: 8px 10px;
             border-radius: 10px;
         }
         .form-container {
             background-color: var(--medium-color);
-            padding: 20px;
+            padding: 40px;
             border-radius: 10px;
-            width: 35%;
+            width: 25%;
             height: fit-content;
+            background-color: whitesmoke;
+            box-shadow: 10px 10px 15px black;
 
         }
         .register-page {
@@ -64,10 +67,10 @@
             border-radius: 5px;
             border: none;
             outline: none;
-
+            width: 100%;
         }
         .already {
-            color: rgb(144, 144, 245);
+            color: blue;
             text-decoration: none;
         }
     </style>

@@ -26,24 +26,29 @@
         }
 
         .login-text {
-            color: white;
+            color: black;
             font-size: 24px;
             margin-bottom: 20px;
         }
         form button {
             background-color: green;
+            width: 100%;
             color: white;
             border: none;
-            padding: 5px 10px;
+            padding: 8px 10px;
             border-radius: 10px;
+            font-weight: 600;
         }
         .form-container {
+            /*
             background-color: var(--medium-color);
-            padding: 20px;
+            */
+            background-color: whitesmoke;
+            padding: 40px 40px;
             border-radius: 10px;
-            width: 35%;
+            width: 25%;
             height: fit-content;
-
+            box-shadow: 10px 10px 15px black;
         }
         .login-page {
             height: 100vh;
@@ -68,10 +73,12 @@
         form input {
             padding: 7px;
             border-radius: 5px;
+            width: 100%;
             border: none;
             outline: none;
-
+            background-color: white;
         }
+
     </style>
 </head>
 <body>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Manage posts</title>
     <style>
       * {
         margin: 0;
@@ -28,7 +28,7 @@
       nav {
         width: 100%;
         padding: 10px 5vh;
-        height: 25vh;
+        min-height: 25vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -44,88 +44,94 @@
         width: 100%;
         display: flex;
         border-radius: 5px;
+        gap: 5px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
       }
       nav ul li {
-             background-color: var(--light-color);
-                  margin: 5px 0;
-                  text-align: center;
-                  width: 100%;
-                  list-style: none;
-                  padding: 6px 10px;
-                  background-color: var(--light-color);
-                }
-      nav ul li a {
+        border-radius: 5px;
+        background-color: var(--light-color);
+        text-align: center;
         width: 100%;
+      height: 100%;
+
+        list-style: none;
+      }
+      nav ul li a {
+        padding: 5px 0;
+      display: inline-block;
+        width: 100%;
+      height: 100%;
         text-decoration: none;
         color: white;
         font-size: 16px;
       }
-      nav ul li:nth-child(2) {
-        background-color: var(--prim-color);
-        padding: 6px 10px;
-        border-radius: 5px;
+      nav ul li:hover {
+        background-color: #d0db6c4c;
+        /* padding: 5px 10px; */
+        /* border-radius: 5px; */
       }
       .hero {
         width: 100%;
-        height: 70vh;
+        min-height: 70vh;
         background-color: var(--prim-color);
         display: flex;
-        align-items: center;
+        /* align-items: center; */
+        padding: 5vh;
         justify-content: center;
       }
       .hero-container {
         background-color: var(--medium-color);
         width: 90%;
-        height: 90%;
+        height: 80%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: start;
         gap: 20px;
-        padding: 10vh;
+        padding:  5vh;
       }
-      .hero-container input,
-      .hero-container button {
-        width: 100%;
-        padding: 8px 10px;
-        border-radius: 5px;
-        border: none;
-        outline: none;
-      }
+
       .hero-container h2 {
         color: white;
       }
-      .hero-container button {
+
+      .table-container {
+        width: 100%;
+
+      }
+      .table-container table {
+        width: 100%;
+        color: white;
+        border: none;
+      }
+      table thead {
         background-color: var(--dark-color);
-        color: white;
       }
-      form{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-         gap: 11px;
-      }
-      label {
-        color: white;
-      }
-      .hero-container textarea {
-        width: 100%;
-         min-height: 80px;
-        border: none;
+      .btn {
+        width: fit-content;
+        padding: 5px 15px;
         border-radius: 5px;
-        padding: 5px;
-        outline: none;
-      }
-      .blog {
-        width: 100%;
-        padding: 8px 10px;
         border: none;
-        border-radius: 5px;
-        background-color: rgba(245, 245, 245, 0.723);
+        color: white;
+        margin: 5px;
+      }
+      .delete-btn {
+        background-color: red;
+      }
+      .edit-btn {
+        background-color: green;
+      }
+
+      th {
+        padding: 10px;
+      }
+      td {
+        border: none;
+        padding: 10px;
+        background-color: var(--light-color);
+        text-align: center;
       }
       footer {
         width: 100%;
@@ -150,15 +156,6 @@
           padding: 5vh;
         }
       }
-      .msg{
-        text-align: center;
-        padding: 6px 8px;
-        color: green;
-        width: fit-content;
-        border: none;
-        border-radius: 7px;
-        background: whitesmoke;
-      }
     </style>
   </head>
   <body>
@@ -166,31 +163,42 @@
       <nav>
         <h2>Blog Dashboard</h2>
         <ul>
-          <li><a href="/user/dashboard">Home</a></li>
-          <li><a href="/user/create-post">Create new post</a></li>
-          <li><a href="/user/profile">Profile</a></li>
+          <li><a href="/admin/dashboard">Manage posts</a></li>
+          <li><a href="/admin/manage-users">Manage users</a></li>
+          <li><a href="/admin/post-moderation">Post moderation</a></li>
+          <li><a href="/admin/report">Reports</a></li>
+
         </ul>
       </nav>
       <div class="hero">
         <div class="hero-container">
-            <p class="msg">${msg?msg}</p>
-          <h2>Create new post</h2>
-         <form action="/user/create-post" method="post">
-             <label for="title">Title</label>
-                      <input type="text" name="title" id="title" placeholder="Enter title"/>
-                      </br>
-                      <label for="content">Content</label>
-                      <textarea name="content" rows="4" cols="50"></textarea>
-                      <label for="tags">Tags</label>
-                      <input
-                        type="text"
-                        name="tags"
-                        id="tags"
-                        placeholder="Comma seperated tags"
-                      />
-</br>
-                      <button type="submit">Publish</button>
-         </form>
+          <h2>Manage Blog posts</h2>
+         <div class="table-container">
+          <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Spring</td>
+                    <td>Viraj</td>
+                    <td>12-2-20</td>
+                    <td>Accepted</td>
+                    <td>
+                      <button class="btn edit-btn">Edit</button>
+                      <button class="btn delete-btn">Delete</button>
+                    </td>
+                </tr>
+
+            </tbody>
+         </table>
+         </div>
         </div>
       </div>
       <footer>
