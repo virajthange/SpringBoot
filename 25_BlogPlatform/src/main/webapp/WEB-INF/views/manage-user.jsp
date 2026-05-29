@@ -1,3 +1,6 @@
+<%@page import="com.spider.__BlogPlatform.entities.User" %>
+<%@page import="java.util.List" %>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -156,6 +159,10 @@
     </style>
   </head>
   <body>
+    <%
+            List<User> users = (List<User>) request.getAttribute("users");
+
+       %>
     <div class="dashboard-page">
       <nav>
         <h2>Blog Dashboard</h2>
@@ -180,15 +187,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                  <td>Viraj</td>
-                  <td>viraj@gmail.com</td>
-                    <td>USER</td>
-                    <td>
-                      <button class="btn edit-btn">Edit</button>
-                      <button class="btn delete-btn">Delete</button>
-                    </td>
-                </tr>
+
+                <%
+                    if(users != null) {
+                        for(User user : users) {
+                %>
+                             <tr>
+                                              <td><%= user.getName() %></td>
+                                              <td><%= user.getEmail() %></td>
+                                                <td><%= user.getRole() %></td>
+                                                <td>
+                                                  <a class="btn edit-btn">Edit</a>
+                                                  <a class="btn delete-btn">Delete</a>
+                                                </td>
+                                            </tr>
+                <%
+                        }
+                    }
+                %>
+               
 
             </tbody>
          </table>

@@ -1,9 +1,12 @@
+<%@page import="com.spider.__BlogPlatform.entities.Blog" %>
+<%@page import="org.springframework.data.domain.Page" %>
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>User Dashboard</title>
     <style>
       * {
         margin: 0;
@@ -55,21 +58,19 @@
              text-align: center;
              width: 100%;
              list-style: none;
-             padding: 6px 10px;
              background-color: var(--light-color);
            }
       nav ul li a {
+      display: inline-block;
+       padding: 6px 10px;
         width: 100%;
         text-decoration: none;
         color: white;
         font-size: 16px;
-        padding: 8px;
       }
-      nav ul li:nth-child(1) {
-        background-color: var(--prim-color);
-        padding: 6px 10px;
-        border-radius: 5px;
-      }
+        nav ul li:hover {
+                   background-color: #d0db6c4c;
+              }
       .hero {
         width: 100%;
         height: 70vh;
@@ -89,19 +90,23 @@
         gap: 20px;
         padding: 10vh;
       }
-      .hero-container input, .hero-container button  {
+      .hero-container input, .hero-container a  {
         width: 100%;
         padding: 8px 10px;
         border-radius: 5px;
         border: none;
         outline: none;
       }
+
       .hero-container h2 {
         color: white;
       }
-      .hero-container button {
+      .hero-container a {
         background-color: var(--dark-color);
         color: white;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
       }
       .blog {
         width: 100%;
@@ -137,11 +142,16 @@
     </style>
   </head>
   <body>
+    <%
+        Page<Blog> pg = (Page<Blog>) request.getAttribute("page");
+        Blog blog = pg.getContent().get(0);
+    %>
+
     <div class="dashboard-page">
         <nav>
             <h2>Blog Dashboard</h2>
             <ul>
-                <li><a href="/user/home">Home</a></li>
+                <li><a href="/user/dashboard">Home</a></li>
                 <li><a href="/user/create-post">Create new post</a></li>
                 <li><a href="/user/profile">Profile</a></li>
             </ul>
@@ -153,13 +163,32 @@
                 <input type="text" placeholder="sort by date">
 
                 <div class="blog">
-                    <h3>Blog title</h3>
-                    <p>Author: John Doe | Date: 2024-10-01</p>
-                    <p>Excerpt: This is an example excerpt from a blog post</p>
+                <%
+                if(blog != null) {
+                %>
+                    <h3><%= blog.getTitle() %></h3>
+                    <p>Author: <%= blog.getUser().getName() %> | Date: <%= blog.getCreatedDate() %></p>
+                    <p>Excerpt: <%= blog.getContent() %> </p>
                     <p>Read more...</p>
+                <%
+                }
+                %>
                 </div>
-                <button> << prev</button>
-                <button>  Next >> </Next></button>
+                <%
+                    if(!pg.isFirst()) {
+                %>
+                        <a href="/user/dashboard?pageNumber= <%= pg.getNumber() - 1 %>"> << prev</a>
+                <%
+                    }
+                %>
+
+                 <%
+                    if(!pg.isLast()) {
+                %>
+                    <a href="/user/dashboard?pageNumber= <%= pg.getNumber() + 1 %>">  Next >> </Next></a>
+                <%
+                    }
+                %>
             </div>
         </div>
         <footer>

@@ -1,3 +1,6 @@
+<%@page import="com.spider.__BlogPlatform.entities.Blog" %>
+<%@page import="java.util.List" %>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -116,6 +119,11 @@
         border: none;
         color: white;
         margin: 5px;
+        cursor: pointer;
+      }
+      a {
+        display: inline-block;
+        text-decoration: none;
       }
       .delete-btn {
         background-color: red;
@@ -159,6 +167,11 @@
     </style>
   </head>
   <body>
+
+   <%
+        List<Blog> blogs = (List<Blog>) request.getAttribute("blogs");
+
+   %>
     <div class="dashboard-page">
       <nav>
         <h2>Blog Dashboard</h2>
@@ -185,16 +198,28 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Spring</td>
-                    <td>Viraj</td>
-                    <td>12-2-20</td>
-                    <td>Accepted</td>
-                    <td>
-                      <button class="btn edit-btn">Edit</button>
-                      <button class="btn delete-btn">Delete</button>
-                    </td>
-                </tr>
+
+                <%
+                    if(blogs != null) {
+                        for(Blog blog : blogs) {
+                %>
+                             <tr>
+                                   <td><%= blog.getTitle() %></td>
+                                   <td><%= blog.getUser().getName() %></td>
+                                   <td><%= blog.getCreatedDate() %></td>
+                                     <td><%= blog.getStatus() %></td>
+                                                <td>
+                                                  <a class="btn edit-btn">Edit</a>
+                                                  <a href="/admin/remove/<%= blog.getId() %>" class="btn delete-btn">Delete</a>
+                                                </td>
+                                            </tr>
+
+                <%
+                        }
+                    }
+                %>
+
+
 
             </tbody>
          </table>

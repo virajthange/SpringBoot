@@ -1,4 +1,4 @@
-package com.spider.__BlogPlatform.service;
+package com.spider.__BlogPlatform.services;
 
 import com.spider.__BlogPlatform.entities.User;
 import com.spider.__BlogPlatform.repositories.UserRepository;

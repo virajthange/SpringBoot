@@ -54,23 +54,24 @@
                   text-align: center;
                   width: 100%;
                   list-style: none;
-                  padding: 6px 10px;
                   background-color: var(--light-color);
-                }
+      }
+       nav ul li:hover {
+           background-color: #d0db6c4c;
+      }
       nav ul li a {
+        display: inline-block;
+        padding: 6px 10px;
         width: 100%;
         text-decoration: none;
         color: white;
         font-size: 16px;
       }
-      nav ul li:nth-child(2) {
-        background-color: var(--prim-color);
-        padding: 6px 10px;
-        border-radius: 5px;
-      }
+
       .hero {
         width: 100%;
-        height: 70vh;
+        min-height: 70vh;
+        padding: 7vh 0;
         background-color: var(--prim-color);
         display: flex;
         align-items: center;
@@ -93,6 +94,7 @@
         padding: 8px 10px;
         border-radius: 5px;
         border: none;
+        cursor: pointer;
         outline: none;
       }
       .hero-container h2 {
@@ -173,16 +175,17 @@
       </nav>
       <div class="hero">
         <div class="hero-container">
-            <p class="msg">${msg?msg}</p>
+            <p class="msg">${msg}</p>
           <h2>Create new post</h2>
          <form action="/user/create-post" method="post">
              <label for="title">Title</label>
-                      <input type="text" name="title" id="title" placeholder="Enter title"/>
+                      <input type="text" required name="title" id="title" placeholder="Enter title"/>
                       </br>
                       <label for="content">Content</label>
-                      <textarea name="content" rows="4" cols="50"></textarea>
+                      <textarea required name="content" rows="4" cols="50"></textarea>
                       <label for="tags">Tags</label>
                       <input
+                        required
                         type="text"
                         name="tags"
                         id="tags"

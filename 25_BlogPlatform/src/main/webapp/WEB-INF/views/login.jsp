@@ -22,7 +22,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: var(--dark-color);
+            background:  var(--dark-color);
+
         }
 
         .login-text {
@@ -31,7 +32,7 @@
             margin-bottom: 20px;
         }
         form button {
-            background-color: green;
+            background-color: var(--dark-color);
             width: 100%;
             color: white;
             border: none;
@@ -44,7 +45,7 @@
             background-color: var(--medium-color);
             */
             background-color: whitesmoke;
-            padding: 40px 40px;
+            padding: 80px 40px;
             border-radius: 10px;
             width: 25%;
             height: fit-content;
@@ -64,11 +65,11 @@
             align-items: center;
             gap: 20px;
         }
-        .form-container p {
-            color: blue
-        }
-        .form-container p a {
-                    list-style: none;
+
+        .form-container  a {
+            color: blue;
+            list-style: none;
+            text-decoration: none;
         }
         form input {
             padding: 7px;
@@ -89,7 +90,7 @@
             <input type="email" name="username" required placeholder="Enter email">
             <input type="password" name="password" required placeholder="Enter password">
             <button type="submit">Login</button>
-            <p>Haven't registered yet ? <a href="/register">Register here</a></p>
+            <a href="/auth/register"> Haven't registered yet ? Register here </a>
         </form>
         </div>
     </div>

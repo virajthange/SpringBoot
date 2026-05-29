@@ -1,3 +1,5 @@
+<%@page import="com.spider.__BlogPlatform.entities.Blog" %>
+<%@page import="java.util.List" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -118,6 +120,10 @@
         cursor: pointer;
       }
 
+    a{
+        display: inline-block;
+        text-decoration: none;
+    }
 
       th {
         padding: 10px;
@@ -163,6 +169,10 @@
     </style>
   </head>
   <body>
+     <%
+          List<Blog> blogs = (List<Blog>) request.getAttribute("blogs");
+     %>
+
     <div class="dashboard-page">
       <nav>
         <h2>Blog Dashboard</h2>
@@ -188,17 +198,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Spring</td>
-                    <td>Viraj</td>
-                    <td>12-2-20</td>
-                    <td><span class="status">Accepted</span></td>
-                    <td>
-                      <button class="btn ">Approve</button>
-                      <button class="btn ">Reject</button>
-                      <button class="btn ">Remove</button>
-                    </td>
-                </tr>
+                <%
+                if(blogs != null) {
+                    for(Blog blog : blogs) {
+                %>
+                         <tr>
+                                 <td><%= blog.getTitle() %></td>
+                                 <td><%= blog.getUser().getName() %></td>
+                                  <td><%= blog.getCreatedDate() %></td>
+                                  <td><span class="status"><%= blog.getStatus() %></span></td>
+                                  <td>
+                                              <a href="/admin/approve/<%= blog.getId() %>" class="btn ">Approve</a>
+                                              <a href="/admin/reject/<%= blog.getId() %>" class="btn ">Reject</a>
+                                              <a href="/admin/remove/<%= blog.getId() %>" class="btn ">Remove</a>
+                                  </td>
+                         </tr>
+
+                 <%
+                    }
+                }
+                 %>
 
             </tbody>
          </table>

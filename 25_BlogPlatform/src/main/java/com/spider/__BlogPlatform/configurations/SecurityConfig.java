@@ -25,15 +25,15 @@ public class SecurityConfig {
         httpSecurity.csrf(c -> c.disable())
                 .authorizeHttpRequests(req ->
                                 req.requestMatchers(
-                                        "/", "/login", "/register").permitAll()
+                                        "/", "/auth/login", "/auth/register").permitAll()
                                         .requestMatchers("/WEB-INF/**").permitAll()
                                         .requestMatchers("/user/**").hasRole(Role.USER.toString())
                                         .requestMatchers("/admin/**").hasRole(Role.ADMIN.toString())
                                         .anyRequest().authenticated()
                         )
-                .formLogin(l -> l.loginPage("/login")
+                .formLogin(l -> l.loginPage("/auth/login")
                         .loginProcessingUrl("/login")
-                        .failureUrl("/register")
+                        .failureUrl("/auth/register")
                         .successHandler(this::loginSuccessHandler)
 //                        .defaultSuccessUrl("/user/dashboard")
 //                       .permitAll()
@@ -45,7 +45,6 @@ public class SecurityConfig {
 
     private void loginSuccessHandler(HttpServletRequest request, HttpServletResponse response,
                                      org.springframework.security.core.Authentication authentication) throws IOException, ServletException {
-
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
         for (GrantedAuthority authority : authorities) {
@@ -54,18 +53,13 @@ public class SecurityConfig {
                 response.sendRedirect("/admin/dashboard");
                 return;
             }
-
             if (authority.getAuthority().equals("ROLE_USER")) {
                 response.sendRedirect("/user/dashboard");
                 return;
             }
         }
-
         response.sendRedirect("/auth/login");
     }
-
-
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {

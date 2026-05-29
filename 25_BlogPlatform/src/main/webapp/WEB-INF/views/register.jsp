@@ -31,7 +31,11 @@
             margin-bottom: 20px;
         }
         form button {
+            /*
             background-color: rgb(53, 153, 193);
+            */
+            background-color: var(--dark-color);
+
             color: white;
             width: 100%;
             border: none;
@@ -40,7 +44,7 @@
         }
         .form-container {
             background-color: var(--medium-color);
-            padding: 40px;
+            padding: 60px 40px;
             border-radius: 10px;
             width: 25%;
             height: fit-content;
@@ -78,14 +82,14 @@
 <body>
     <div class="register-page">
         <div class="form-container">
-            <form action="/register" method="post">
+            <form action="/auth/register" method="post">
             <h2 class="register-text">Register here</h2>
             <input type="text" name="username" required placeholder="Enter username">
             <input type="email" name="email" required placeholder="Enter email">
             <input type="text" name="name" required placeholder="Enter full name">
             <input type="password" name="password" required placeholder="Enter password">
             <button type="submit">Register</button>
-            <a class="already" href="/login">Already have an account? Login here</a>
+            <a class="already" href="/auth/login">Already have an account? Login here</a>
         </form>
         </div>
     </div>

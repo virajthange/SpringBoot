@@ -1,3 +1,6 @@
+<%@page import="com.spider.__BlogPlatform.entities.User" %>
+<%@page import="com.spider.__BlogPlatform.entities.Blog" %>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,7 +20,7 @@
         --prim-color: #3b3d24;
       }
       body {
-        height: 100vh;
+        min-height: 100vh;
         width: 100%;
         background-color: var(--dark-color);
       }
@@ -54,21 +57,19 @@
         text-align: center;
         width: 100%;
         list-style: none;
-        padding: 6px 10px;
         background-color: var(--light-color);
       }
       nav ul li a {
+      display: inline-block;
+       padding: 6px 10px;
         width: 100%;
         text-decoration: none;
         color: white;
         font-size: 16px;
-        padding: 8px;
       }
-      nav ul li:nth-child(3) {
-        background-color: var(--prim-color);
-        padding: 6px 10px;
-        border-radius: 5px;
-      }
+    nav ul li:hover {
+               background-color: #d0db6c4c;
+          }
       .hero {
         width: 100%;
         min-height: 70vh;
@@ -76,11 +77,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 5vh 0;
       }
       .hero-container {
         background-color: var(--medium-color);
         width: 90%;
-        height: 90%;
+        min-height: 90%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -98,12 +100,14 @@
       }
       .hero-container h2,
       .hero-container p,
-      .hero-container h3 {
+      .hero-container h1 {
         color: white;
       }
       .hero-container button {
         background-color: var(--dark-color);
         color: white;
+        cursor: pointer;
+
       }
       .blog {
         width: 100%;
@@ -127,6 +131,11 @@
         align-content: center;
         text-align: center;
       }
+      button a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+      }
 
       @media screen and (max-width: 600px) {
         nav {
@@ -142,6 +151,10 @@
     </style>
   </head>
   <body>
+
+    <%
+        User user =  (User) request.getAttribute("user");
+    %>
     <div class="dashboard-page">
       <nav>
         <h2>Blog Dashboard</h2>
@@ -154,17 +167,24 @@
       <div class="hero">
         <div class="hero-container">
           <h2>User Profile</h2>
-          <p>Name: John Doe</p>
-          <p>Email: john.doe@example.com</p>
+          <p>Name: <%= user.getName() %></p>
+          <p>Email: <%= user.getEmail() %> </p>
 
-          <h3>Your posts</h3>
-          <div class="blog">
-            <h3 style="color: black">Blog title</h3>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
+          <h1>Your posts</h1>
+          <%
+          for(Blog blog : user.getBlogs()) {
+          %>
+             <div class="blog">
+                        <h3 style="color: black"><%= blog.getTitle() %></h3>
+                        <button>Edit</button>
+                        <button>Delete</button>
+             </div>
+          <%
+          }
+          %>
 
-          <button>Logout</button>
+
+          <button ><a href="/logout">Logout</a></button>
         </div>
       </div>
       <footer>

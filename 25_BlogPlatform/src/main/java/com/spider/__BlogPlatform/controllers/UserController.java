@@ -1,11 +1,8 @@
 package com.spider.__BlogPlatform.controllers;
 
 import com.spider.__BlogPlatform.dtos.BlogDTO;
-import com.spider.__BlogPlatform.entities.Blog;
-import com.spider.__BlogPlatform.enums.Status;
-import com.spider.__BlogPlatform.repositories.BlogRepository;
+import com.spider.__BlogPlatform.serviceImplementation.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,39 +10,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
-    private final BlogRepository blogRepository;
+    private final UserServiceImpl userServiceImpl;
 
     @GetMapping("/create-post")
     public String createPost(Model model, @RequestParam(required = false) String msg) {
-        BlogDTO blogDTO = new BlogDTO();
-        model.addAttribute("blogDTO", blogDTO);
-        model.addAttribute("msg", msg);
-        return "create-post";
+        return userServiceImpl.createPost(model, msg);
     }
 
     @PostMapping("/create-post")
-    public String createPostLogic(BlogDTO blogDTO) {
-        System.out.println("create-post triggered");
-        Blog blog = new Blog();
-        BeanUtils.copyProperties(blogDTO, blog);
-        blog.setStatus(Status.PENDING.toString());
-        System.out.println("BlogDTO is: "+ blogDTO);
-        System.out.println("Blog is: "+blog);
-        blogRepository.save(blog);
-        return "redirect:/user/create-post?msg=Post created successfully...!";
+    public String createPostLogic(BlogDTO blogDTO, Principal principal) {
+       return userServiceImpl.createPostLogic(blogDTO, principal);
     }
 
     @GetMapping("/dashboard")
-    public String home() {
-        return "user-dashboard";
+    public String home(@RequestParam(required = false, defaultValue = "0") Integer pageNumber , Model model) {
+        return userServiceImpl.home(model, pageNumber);
     }
 
     @GetMapping("/profile")
-    public String profile() {
-        return "profile";
+    public String profile(Principal principal, Model model) {
+        return userServiceImpl.profile(principal, model);
     }
 }

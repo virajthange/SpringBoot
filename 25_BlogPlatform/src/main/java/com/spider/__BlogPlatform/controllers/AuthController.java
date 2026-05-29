@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/auth")
 public class AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -22,6 +24,10 @@ public class AuthController {
         return "login";
     }
 
+    @GetMapping("/")
+    public String home() {
+        return "login";
+    }
     @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("userDTO", new UserDTO());
@@ -36,6 +42,6 @@ public class AuthController {
         user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         userRepository.save(user);
         System.out.println("User saved...");
-        return "redirect:/user/home";
+        return "redirect:/auth/login";
     }
 }
