@@ -19,7 +19,6 @@ import java.util.Optional;
 @Controller
 @RequiredArgsConstructor
 public class StudentController {
-    private final StudentRepository studentRepository;
     private final StudentService studentService;
 
     @GetMapping("/studentlist")
@@ -49,17 +48,8 @@ public class StudentController {
 
     @GetMapping("/deletestudent/{studentId}")
     public String deletestudent(@PathVariable Integer studentId) {
-        Optional<Student> optionalStudent = studentRepository.findById(studentId);
-        if(optionalStudent.isEmpty()) {
-            return "redirect:/dashboard?msg=User not found !";
-        }
-        Student student = optionalStudent.get();
-        List<Course> courses = student.getCourses();
-        for (Course val : courses) {
-            List<Student> students = val.getStudents();
-            students.remove(student);
-        }
-        studentRepository.delete(student);
-        return "redirect:/dashboard?msg=Student deleted successfully !";
+       return studentService.deleteStudent(studentId);
     }
+
+
 }

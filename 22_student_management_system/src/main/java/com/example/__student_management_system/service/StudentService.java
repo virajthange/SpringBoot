@@ -11,4 +11,5 @@ public interface StudentService {
     String addNewStudent(Principal principal, StudentDTO studentDTO);
     String getEditStudent(Integer studentId, Principal principal, Model model);
     String editStudents(StudentDTO studentDTO);
+    String deleteStudent(Integer studentId);
 }

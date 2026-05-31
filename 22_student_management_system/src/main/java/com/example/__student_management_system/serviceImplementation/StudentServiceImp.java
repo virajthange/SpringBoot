@@ -100,4 +100,20 @@ public class StudentServiceImp implements StudentService {
         studentRepository.save(student);
         return "redirect:/dashboard?msg=Student edited successfully";
     }
+
+    @Override
+    public String deleteStudent(Integer studentId) {
+        Optional<Student> optionalStudent = studentRepository.findById(studentId);
+        if(optionalStudent.isEmpty()) {
+            return "redirect:/dashboard?msg=User not found !";
+        }
+        Student student = optionalStudent.get();
+        List<Course> courses = student.getCourses();
+        for (Course val : courses) {
+            List<Student> students = val.getStudents();
+            students.remove(student);
+        }
+        studentRepository.delete(student);
+        return "redirect:/dashboard?msg=Student deleted successfully !";
+    }
 }
