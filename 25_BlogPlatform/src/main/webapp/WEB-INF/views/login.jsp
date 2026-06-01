@@ -23,7 +23,12 @@
             justify-content: center;
             align-items: center;
             background:  var(--dark-color);
-
+            background: linear-gradient(
+                    135deg,
+                    #2F311C,
+                    #4A4D2E,
+                    #55593A
+                );
         }
 
         .login-text {
@@ -45,6 +50,7 @@
             background-color: var(--medium-color);
             */
             background-color: whitesmoke;
+            backdrop-filter: blur(50px);
             padding: 80px 40px;
             border-radius: 10px;
             width: 25%;
@@ -79,7 +85,13 @@
             outline: none;
             background-color: white;
         }
-
+        form input:focus {
+            border-color: #4A4D2E;
+            box-shadow: 0 0 10px rgba(74,77,46,0.3);
+        }
+        form button:hover {
+            background: #55593A;
+        }
     </style>
 </head>
 <body>

@@ -209,8 +209,8 @@
                                    <td><%= blog.getCreatedDate() %></td>
                                      <td><%= blog.getStatus() %></td>
                                                 <td>
-                                                  <a class="btn edit-btn">Edit</a>
-                                                  <a href="/admin/remove/<%= blog.getId() %>" class="btn delete-btn">Delete</a>
+                                                  <a href="/admin/edit-post/<%= blog.getId() %>" class="btn edit-btn">Edit</a>
+                                                  <a href="/admin/delete-post/<%= blog.getId() %>" class="btn delete-btn">Delete</a>
                                                 </td>
                                             </tr>
 

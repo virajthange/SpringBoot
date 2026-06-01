@@ -193,20 +193,19 @@
                         for(User user : users) {
                 %>
                              <tr>
-                                              <td><%= user.getName() %></td>
-                                              <td><%= user.getEmail() %></td>
-                                                <td><%= user.getRole() %></td>
-                                                <td>
-                                                  <a class="btn edit-btn">Edit</a>
-                                                  <a class="btn delete-btn">Delete</a>
-                                                </td>
+                                 <td><%= user.getName() %></td>
+                                 <td><%= user.getEmail() %></td>
+                                  <td><%= user.getRole() %></td>
+                                     <td>
+                                        <a href="/admin/edit-user/<%= user.getId() %>" class="btn edit-btn">Edit</a>
+                                        <a href="/admin/delete-user/<%= user.getId() %>" class="btn delete-btn">Delete</a>
+
+                                     </td>
                                             </tr>
                 <%
                         }
                     }
                 %>
-               
-
             </tbody>
          </table>
          </div>
